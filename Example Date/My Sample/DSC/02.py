@@ -46,11 +46,14 @@ def plot_dsc_curve(df):
     plt.xlabel('Temperature (°C)', fontsize=12)
     plt.ylabel('Heat Flow (W/g)', fontsize=12)
     plt.title('Full DSC Curve with Multiple Segments', fontsize=14)
+    # set x and y axis limits
+    plt.xlim(df['Temperature (°C)'].min()-25, df['Temperature (°C)'].max()+25)
+    plt.ylim(-1, df['Heat Flow (W/g)'].max()+0.1)
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.show()
 
 # Example usage
-filename = 'chabif01.txt'
+filename = 'LLM_EP_02_PMMA.txt'
 df = read_dsc_data(filename)
 print(f"Total data points loaded: {len(df)}")
 plot_dsc_curve(df)
