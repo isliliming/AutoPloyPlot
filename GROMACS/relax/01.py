@@ -1,12 +1,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
-def plot_energy_xvg(filename="energy.xvg"):
+def plot_energy_xvg(filename):
     """
     Plots the Potential Energy from a GROMACS .xvg energy file.
 
     Args:
-        filename (str, optional): The name of the .xvg file. Defaults to "energy.xvg".
+        filename (str, optional): The name of the .xvg file. Defaults to "energy_steps50000.xvg".
     """
 
     time = []
@@ -37,24 +38,30 @@ def plot_energy_xvg(filename="energy.xvg"):
     potential_energy = potential_energy[5000:]
 
     # Create the plot
-    plt.figure(figsize=(10, 6))  # Adjust figure size as needed
-    plt.plot(time, potential_energy, label='Potential Energy (kJ/mol)')
+    plt.figure(figsize=(12, 6))  # Adjust figure size as needed
+    plt.plot(time, potential_energy,color='#332288', linewidth=1.5)
 
     # Add labels and title
-    plt.xlabel('Time (ps)')
-    plt.ylabel('Potential Energy (kJ/mol)')
-    plt.title('GROMACS Potential Energy vs. Time')
-    # set the x-axis limits
-    # plt.xlim(4000,time[-1])
-    plt.grid(True)  # Add a grid for better readability
+    plt.xlabel('Time (ps)', fontsize=20)
+    plt.ylabel('Potential Energy (kJ/mol)', fontsize=20)
+    # plt.title('GROMACS Potential Energy vs. Time',  fontsize=16)
+    plt.xticks(fontsize=18)
+    plt.yticks(fontsize=18)
+    plt.grid(True, linestyle='--', alpha=0.7)
     plt.legend()
 
     # Save the plot
-    # plt.savefig("potential_energy.png")
+    plt.savefig(filename[:-3]+'png', dpi=300)
 
     # Show the plot
     plt.show()
 
 
 if __name__ == "__main__":
-    plot_energy_xvg("energy.xvg")  # Replace "energy.xvg" with your filename if different
+    files = os.listdir()
+    for file in files:
+        if file.endswith('.xvg'):
+            filename = file
+            print(f"Plotting {filename}")
+            plot_energy_xvg(filename)  # Replace "energy_steps50000.xvg" with your filename if different
+            print(f"Plot saved as: {filename[:-3]+'png'}")
