@@ -45,8 +45,8 @@ def read_dsc_data(filename):
 def plot_dsc_curve(df):
     plt.figure(figsize=(12, 6))
     plt.plot(df['Temperature (°C)'], df['Heat Flow (W/g)'], color='#332288', linewidth=1.5)
-    plt.xlabel('Temperature (°C)', fontsize=20)
-    plt.ylabel('Heat Flow (W/g)', fontsize=20)
+    plt.xlabel('Temperature / °C', fontsize=20)
+    plt.ylabel('Heat Flow / W$\cdot$g$^{-1}$', fontsize=20)
     plt.xticks(fontsize=18)
     plt.yticks(fontsize=18)
     # plt.title('Full DSC Curve with Multiple Segments', fontsize=14)
