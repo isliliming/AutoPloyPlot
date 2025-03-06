@@ -60,6 +60,6 @@ def plot_dsc_curve(df):
     plt.show()
 
 # Example usage
-filename = 'chabif01.txt'
+filename = 'LLM_ER_01.txt'
 df = read_dsc_data(filename)
 plot_dsc_curve(df)
