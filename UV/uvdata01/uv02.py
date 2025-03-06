@@ -10,7 +10,7 @@ with open('LLM_UV_01.csv', 'r') as f:
             header_line = line_num
             break
 
-# find the sample names
+# find the sample namess
 with open('LLM_UV_01.csv', 'r') as f:
     for line in f:
         if line.startswith('Name,Sample'):
