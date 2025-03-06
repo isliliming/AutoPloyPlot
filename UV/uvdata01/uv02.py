@@ -20,7 +20,7 @@ with open('LLM_UV_01.csv', 'r') as f:
 
 
 
-# Read data and reverse order
+# Read data and reverse orders
 df = pd.read_csv('LLM_UV_01.csv', skiprows=header_line)
 df = df.sort_values('Wavelength (nm)', ascending=True)  # Sort from low to high wavelength
 
