@@ -34,8 +34,8 @@ def plot_energy_xvg(filename):
     potential_energy = np.array(potential_energy)
 
     # Filter out the first 4000 ps
-    time = time[5000:]
-    potential_energy = potential_energy[5000:]
+    time = time[3000:]
+    potential_energy = potential_energy[3000:]
 
     # Create the plot
     plt.figure(figsize=(12, 6))  # Adjust figure size as needed
