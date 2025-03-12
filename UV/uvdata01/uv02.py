@@ -1,17 +1,22 @@
+from fileinput import filename
+
 import pandas as pd
 import matplotlib.pyplot as plt
+
+
+file_path = 'LLM_UV_03.csv'
 
 # Read data and find header
 # find the data
 header_line = 0
-with open('LLM_UV_01.csv', 'r') as f:
+with open(file_path, 'r') as f:
     for line_num, line in enumerate(f):
         if line.startswith(",Wavelength (nm),Abs"):
             header_line = line_num
             break
 
 # find the sample namess
-with open('LLM_UV_01.csv', 'r') as f:
+with open(file_path, 'r') as f:
     for line in f:
         if line.startswith('Name,Sample'):
             sample_names = line.split(',')[1:]
@@ -21,7 +26,7 @@ with open('LLM_UV_01.csv', 'r') as f:
 
 
 # Read data and reverse orders
-df = pd.read_csv('LLM_UV_01.csv', skiprows=header_line)
+df = pd.read_csv(file_path, skiprows=header_line)
 df = df.sort_values('Wavelength (nm)', ascending=True)  # Sort from low to high wavelength
 
 # Extract data
@@ -31,7 +36,6 @@ abs_samples = {
     'Sample 2': df['Abs.1'],
     'Sample 3': df['Abs.2'],
     'Sample 4': df['Abs.3'],
-    'Sample 5': df['Abs.4']
 }
 
 # Plotting
