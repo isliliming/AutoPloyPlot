@@ -62,7 +62,7 @@ def plot_dsc_curve(df):
 
 # Usage
 # change the filename to the file you want to load
-filename = 'LLM_EP_02_PMMA.txt'
+filename = '/Users/liming/Desktop/AutoPloyPlot/DSC/data_dsc/LLM_EP09/LLM_EP0901.txt'
 df = read_dsc_data(filename)
 plot_dsc_curve(df)
 
