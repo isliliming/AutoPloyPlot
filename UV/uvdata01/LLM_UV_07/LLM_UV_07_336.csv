@@ -1,0 +1,24 @@
+﻿CSV Report,LLM_UV_07_336.csv
+Worksheet Type,Scan
+
+METHOD
+X mode,nm
+Y mode,Abs
+Collect mode,Wavelength
+Wavelengths (nm),336.00
+Averaging Time (s),.1
+Spectral Bandwidth (nm),2
+Detector module,Multicell Peltier UV-Vis
+Zero,Off
+Experiment Zones,1
+Experimental temperature (°C),25°C
+
+
+
+Wavelength scan,2025-03-17 11:43:13 (+00:00)
+Sample,336.00 nm,Y mode
+,Value
+Sample 1,0.546622084748797,Abs
+Sample 2,-0.0305413173644338,Abs
+Sample 3,0.276676433239022,Abs
+Sample 4,0.193258350002504,Abs
