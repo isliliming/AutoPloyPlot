@@ -193,6 +193,6 @@ def process_folder(folder_path):
 
 # Usage example:
 # Specify the folder path containing your DSC data files
-folder_path = '/Users/liming/Desktop/AutoPloyPlot/DSC/data_dsc/LLM_EP09'
+folder_path = '/Users/liming/Desktop/AutoPloyPlot/DSC/data_dsc/LLM_EP10'
 process_folder(folder_path)
 
