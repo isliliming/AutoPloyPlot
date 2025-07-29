@@ -81,7 +81,26 @@ def detect_step_temperature_changes(full_df, steps_df):
 
 # find the Tg
 def find_Tg(steps_df, full_df, folder_path):
-    3
+    # find the last heating step
+    last_heating_step = steps_df[steps_df['step_type'] == 'heating'].iloc[-1]
+    # find the start and end index of the last heating step
+    start_idx = last_heating_step['start_idx']
+    end_idx = last_heating_step['end_idx']
+    df_segment = full_df.iloc[start_idx:end_idx+1] # 3 columns: Time (min), Temperature (°C), Heat Flow (W/g)
+
+    # add data to the df_segment and make it more smooth
+
+    
+    # plot the df_segment
+    plt.figure(figsize=(12, 6))
+    plt.plot(df_segment['Temperature (°C)'], df_segment['Heat Flow (W/g)'], color='#332288', linewidth=1.5)
+    plt.xlabel('Temperature / °C', fontsize=20)
+    plt.ylabel('Heat Flow / W$\cdot$g$^{-1}$', fontsize=20)
+    plt.title('Last Heating Step', fontsize=20)
+    plt.xticks(fontsize=18)
+    plt.yticks(fontsize=18)
+    plt.savefig(os.path.join(folder_path, 'last_heating_step.png'), dpi=300)
+    plt.show()
         
 
 
@@ -195,13 +214,13 @@ def process_folder(folder_path):
             df, steps_df = read_dsc_data(full_path)
             steps_df = detect_step_temperature_changes(df, steps_df)
             steps_df = color_for_steps(steps_df)
-            find_Tg(steps_df, df, folder_path)
+            # find_Tg(steps_df, df, folder_path)
             plot_dsc_curve(df, folder_path, file_name, steps_df)
         except Exception as e:
             print(f"Error processing {file_name}: {str(e)}")
 
 # Usage example:
 # Specify the folder path containing your DSC data files
-folder_path = '/Users/liming/Desktop/AutoPloyPlot/DSC/data_dsc/dsc_test'
+folder_path = '/Users/liming/Desktop/AutoPloyPlot/DSC/data_dsc/EP090110'
 process_folder(folder_path)
 
